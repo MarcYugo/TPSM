@@ -35,7 +35,7 @@ class Conv2d(Module):
         if self.bias is not None:
             assert X.device == self.bias.device, f'inputs and bias should be on same device, {X.device} != {self.bias.device}' 
         
-        if X.is_cuda():
+        if X.is_cuda:
             out = Conv2d_function_gpu.apply(X, self.weight, self.bias, 
                                             self.kernel_size, self.stride, self.padding, self.dilation)
         else:
